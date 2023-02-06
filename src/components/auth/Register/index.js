@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import authService from "../../../services/auth.service";
 import MyTextInput from "../../common/MyTextInput";
 
 export class RegisterPage extends Component {
@@ -17,10 +18,17 @@ export class RegisterPage extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmitFormHandler = (e) => {
+  onSubmitFormHandler = async (e) => {
     e.preventDefault();
     console.log("Посилаємо на сервер", this.state);
-  }
+    try {
+      const result = await authService.register(this.state);
+      console.log("Server is good", result);
+    } 
+    catch (error) {
+      console.log("Server is bad", error);
+    }
+  };
 
   render() {
     // console.log("state ", this.state);
@@ -69,7 +77,9 @@ export class RegisterPage extends Component {
               value={confirmPassword}
               onChangeHandler={this.onChangeHandler}
             />
-            <button type="submit" className="btn btn-primary">Зареєструватись</button>
+            <button type="submit" className="btn btn-primary">
+              Зареєструватись
+            </button>
           </form>
         </div>
       </div>
