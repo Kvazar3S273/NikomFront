@@ -17,8 +17,13 @@ export class RegisterPage extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onSubmitFormHandler = (e) => {
+    e.preventDefault();
+    console.log("Посилаємо на сервер", this.state);
+  }
+
   render() {
-    console.log("state ", this.state);
+    // console.log("state ", this.state);
     const {
       email,
       firstName,
@@ -31,7 +36,7 @@ export class RegisterPage extends Component {
       <div className="row">
         <div className="offset-md-3 col-md-6">
           <h2 className="text-center mt-3">Реєстрація</h2>
-          <form>
+          <form onSubmit={this.onSubmitFormHandler}>
             <MyTextInput
               field="email"
               label="Електронна пошта"
@@ -64,6 +69,7 @@ export class RegisterPage extends Component {
               value={confirmPassword}
               onChangeHandler={this.onChangeHandler}
             />
+            <button type="submit" className="btn btn-primary">Зареєструватись</button>
           </form>
         </div>
       </div>
