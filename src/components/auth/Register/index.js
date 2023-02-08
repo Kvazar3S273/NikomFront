@@ -24,6 +24,7 @@ export class RegisterPage extends Component {
     try {
       const result = await authService.register(this.state);
       console.log("Server is good", result);
+      // this.props.history.push("/");
     } 
     catch (error) {
       console.log("Server is bad", error);

@@ -5,6 +5,7 @@ export default axios.create({
     // baseURL: `${urlBackend}`,
 
     baseURL: "http://localhost:5027/",
+    // baseURL: "/",
     headers:{
         "Content-type":"application/json"
     }
