@@ -1,39 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import { useField, useFormik } from 'formik';
 
-const MyTextInput = ({ 
-    field, 
-    value, 
-    label, 
-    type, 
-    onChangeHandler }) => {
-  return (
-    <div className="mb-3">
-      <label htmlFor={field} className="form-label">
-        {label}
-      </label>
-      <input
-        type={type}
-        className="form-control"
-        id={field}
-        name={field}
-        value={value}
-        onChange={onChangeHandler}
-      />
-    </div>
-  );
-};
+const MyTextInput = ({ label, ...props }) => {
+    // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+    // which we can spread on <input>. We can use field meta to show an error
+    // message if the field is invalid and it has been touched (i.e. visited)
+    const [field, meta] = useField(props);
+    //console.log("fields",field);
+    return (
+      <div className="mb-3">
+        <label htmlFor={props.id || props.name} className="form-label">
+          {label}
+        </label>
+        <input className='form-control' {...field} {...props}/>
+        
+        {/* <input
+          className={classNames(
+            "form-control",
+            { "is-invalid": meta.touched && meta.error },
+            { "is-valid": meta.touched && !meta.error }
+          )}
+          {...field}
+          {...props}
+        /> */}
 
-MyTextInput.propTypes = {
-    field: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    onChangeHandler: PropTypes.func.isRequired
-}
-
-MyTextInput.defaultProps = {
-    type: "text"
-}
+        {(meta.touched && meta.error) 
+        && <div className="invalid-feedback">{meta.error}</div>}
+      </div>
+    );
+  };
 
 export default MyTextInput;

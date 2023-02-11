@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import authService from "../../../services/auth.service";
-import MyTextInput from "../../common/MyTextInput";
+import TextBoxField from "../../common/TextBoxField";
 
 export class RegisterPage extends Component {
   state = {
@@ -46,32 +46,32 @@ export class RegisterPage extends Component {
         <div className="offset-md-3 col-md-6">
           <h2 className="text-center mt-3">Реєстрація</h2>
           <form onSubmit={this.onSubmitFormHandler}>
-            <MyTextInput
+            <TextBoxField
               field="email"
               label="Електронна пошта"
               value={email}
               onChangeHandler={this.onChangeHandler}
             />
-            <MyTextInput
+            <TextBoxField
               field="firstName"
               label="Ім'я"
               value={firstName}
               onChangeHandler={this.onChangeHandler}
             />
-            <MyTextInput
+            <TextBoxField
               field="secondName"
               label="Прізвище"
               value={secondName}
               onChangeHandler={this.onChangeHandler}
             />
-            <MyTextInput
+            <TextBoxField
               field="password"
               type="password"
               label="Пароль"
               value={password}
               onChangeHandler={this.onChangeHandler}
             />
-            <MyTextInput
+            <TextBoxField
               field="confirmPassword"
               type="password"
               label="Підтвердження пароля"
