@@ -1,5 +1,6 @@
 import React from 'react';
 import { useField, useFormik } from 'formik';
+import classNames from 'classnames';
 
 const MyTextInput = ({ label, ...props }) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -12,9 +13,8 @@ const MyTextInput = ({ label, ...props }) => {
         <label htmlFor={props.id || props.name} className="form-label">
           {label}
         </label>
-        <input className='form-control' {...field} {...props}/>
         
-        {/* <input
+        <input
           className={classNames(
             "form-control",
             { "is-invalid": meta.touched && meta.error },
@@ -22,10 +22,10 @@ const MyTextInput = ({ label, ...props }) => {
           )}
           {...field}
           {...props}
-        /> */}
+        />
 
-        {(meta.touched && meta.error) 
-        && <div className="invalid-feedback">{meta.error}</div>}
+        {(meta.touched && meta.error) &&
+            <div className='invalid-feedback'>{meta.error}</div>}
       </div>
     );
   };
