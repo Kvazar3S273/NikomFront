@@ -1,25 +1,26 @@
 import { Formik, Form } from "formik";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth.service";
 import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
 import { useDispatch } from "react-redux";
 import { REGISTER } from "../../../constants/actionTypes";
+import MyPhotoInput from "../../common/MyPhotoInput";
 
 const RegisterPage = () => {
   const initState = {
     email: "",
     firstName: "",
     secondName: "",
+    photo: null,
     password: "",
     confirmPassword: "",
   };
 
-  // const history = useHistory();
   const navigator = useNavigate();
   const dispatch = useDispatch();
-
+  const refFormik = useRef();
   const onSubmitHandler = async (values) => {
     try {
       const result = await authService.register(values);
@@ -37,10 +38,11 @@ const RegisterPage = () => {
         <h2 className="text-center mt-3">Реєстрація</h2>
 
         <Formik
+          innerRef={refFormik}
           initialValues={{ initState }}
           validationSchema={validationFields()}
           onSubmit={onSubmitHandler}
-        >
+          >
           <Form>
             <MyTextInput
               label="Електронна пошта"
@@ -57,13 +59,18 @@ const RegisterPage = () => {
               name="secondName"
               id="secondName"
             />
+            <label className="mb-3">Виберіть фото:</label>
+            <MyPhotoInput
+              refFormik={refFormik}
+              field="photo" 
+              />
             <MyTextInput
               label="Пароль"
               type="password"
               name="password"
               id="password"
             />
-            <MyTextInput
+            <MyTextInput 
               label="Підтвердження пароля"
               type="password"
               name="confirmPassword"
