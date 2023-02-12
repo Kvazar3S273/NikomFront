@@ -1,10 +1,14 @@
+import { Formik, Form } from "formik";
 import React from "react";
-import { Component } from "react";
+import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth.service";
-import TextBoxField from "../../common/TextBoxField";
+import MyTextInput from "../../common/MyTextInput";
+import validationFields from "./validation";
+import { useDispatch } from "react-redux";
+import { REGISTER } from "../../../constants/actionTypes";
 
-export class RegisterPage extends Component {
-  state = {
+const RegisterPage = () => {
+  const initState = {
     email: "",
     firstName: "",
     secondName: "",
@@ -12,80 +16,67 @@ export class RegisterPage extends Component {
     confirmPassword: "",
   };
 
-  onChangeHandler = (e) => {
-    // console.log("onChange name", e.target.name);
-    // console.log("onChange value", e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  // const history = useHistory();
+  const navigator = useNavigate();
+  const dispatch = useDispatch();
 
-  onSubmitFormHandler = async (e) => {
-    e.preventDefault();
-    console.log("Посилаємо на сервер", this.state);
+  const onSubmitHandler = async (values) => {
     try {
-      const result = await authService.register(this.state);
+      const result = await authService.register(values);
       console.log("Server is good", result);
-      // this.props.history.push("/");
-    } 
-    catch (error) {
-      console.log("Server is bad", error);
+      dispatch({type: REGISTER, payload: values.email});
+      navigator("/");
+    } catch (error) {
+      console.log("Server is bad", error.response);
     }
   };
 
-  render() {
-    // console.log("state ", this.state);
-    const {
-      email,
-      firstName,
-      secondName,
-      password,
-      confirmPassword,
-    } = this.state;
+  return (
+    <div className="row">
+      <div className="offset-md-3 col-md-6">
+        <h2 className="text-center mt-3">Реєстрація</h2>
 
-    return (
-      <div className="row">
-        <div className="offset-md-3 col-md-6">
-          <h2 className="text-center mt-3">Реєстрація</h2>
-          <form onSubmit={this.onSubmitFormHandler}>
-            <TextBoxField
-              field="email"
+        <Formik
+          initialValues={{ initState }}
+          validationSchema={validationFields()}
+          onSubmit={onSubmitHandler}
+        >
+          <Form>
+            <MyTextInput
               label="Електронна пошта"
-              value={email}
-              onChangeHandler={this.onChangeHandler}
+              name="email"
+              id="email"
             />
-            <TextBoxField
-              field="firstName"
+            <MyTextInput
               label="Ім'я"
-              value={firstName}
-              onChangeHandler={this.onChangeHandler}
+              name="firstName"
+              id="firstName"
             />
-            <TextBoxField
-              field="secondName"
+            <MyTextInput
               label="Прізвище"
-              value={secondName}
-              onChangeHandler={this.onChangeHandler}
+              name="secondName"
+              id="secondName"
             />
-            <TextBoxField
-              field="password"
-              type="password"
+            <MyTextInput
               label="Пароль"
-              value={password}
-              onChangeHandler={this.onChangeHandler}
-            />
-            <TextBoxField
-              field="confirmPassword"
               type="password"
+              name="password"
+              id="password"
+            />
+            <MyTextInput
               label="Підтвердження пароля"
-              value={confirmPassword}
-              onChangeHandler={this.onChangeHandler}
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
             />
             <button type="submit" className="btn btn-primary">
               Зареєструватись
             </button>
-          </form>
-        </div>
+          </Form>
+        </Formik>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default RegisterPage;

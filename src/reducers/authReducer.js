@@ -1,9 +1,24 @@
+import { LOGIN, REGISTER } from "../constants/actionTypes";
+
 const initialState = {
-    isAuth: false
-}
+  isAuth: false,
+  username: "",
+};
 
 const authReducer = (state = initialState, action) => {
-    return state;
-}
+  const { type, payload } = action;
+  switch (type) {
+    case REGISTER: 
+    case LOGIN: {
+      return {
+        isAuth: true,
+        username: payload
+      };
+    }
+    default: {
+        return state;
+    }
+  }
+};
 
 export default authReducer;

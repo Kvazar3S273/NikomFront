@@ -2,12 +2,20 @@ import React from "react";
 import { Form, Formik } from "formik";
 import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
+import { useDispatch } from "react-redux";
+import { LOGIN } from "../../../constants/actionTypes";
 
 const LoginPage = () => {
   const initState = {
     email: "",
     password: "",
   };
+  const dispatch = useDispatch();
+  
+  const onSubmitHandler = (values) => {
+    dispatch({type: LOGIN, payload: values.email});
+    console.log("values submit", values)
+  }
 
   return (
     <div className="row">
@@ -16,9 +24,7 @@ const LoginPage = () => {
         <Formik
           initialValues={{initState}}
           validationSchema={validationFields()}
-          onSubmit={(values) => {
-            console.log("values submit", values);
-          }}
+          onSubmit={onSubmitHandler}
         >
           <Form>
             <MyTextInput 
@@ -37,6 +43,7 @@ const LoginPage = () => {
               className="btn btn-success"
               value="Вхід"
             ></input>
+            
           </Form>
         </Formik>
       </div>

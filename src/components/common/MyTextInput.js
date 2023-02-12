@@ -1,5 +1,5 @@
 import React from 'react';
-import { useField, useFormik } from 'formik';
+import { useField } from 'formik';
 import classNames from 'classnames';
 
 const MyTextInput = ({ label, ...props }) => {
