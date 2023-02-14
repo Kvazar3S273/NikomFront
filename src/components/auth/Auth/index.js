@@ -53,11 +53,11 @@ const AuthPage = () => {
         <div className={classNames( "register", {"active": login}, {"":!login})}>
           <form>
             <h2>Реєстрація</h2>
-            <input type="email" placeholder="Електронна пошта" className="reg-input" />
-            <input type="text" className="reg-input" placeholder="Ім'я користувача" />
-            <input type="text" className="reg-input" placeholder="Прізвище" />
-            <input type="password" className="reg-input" placeholder="Пароль" />
-            <input type="password" className="reg-input" placeholder="Підтвердження пароля" />
+            <input type="email" placeholder="Електронна пошта" className="reg-input" required/>
+            <input type="text" className="reg-input" placeholder="Ім'я користувача" required/>
+            <input type="text" className="reg-input" placeholder="Прізвище" required/>
+            <input type="password" className="reg-input" placeholder="Пароль" required/>
+            <input type="password" className="reg-input" placeholder="Підтвердження пароля" required/>
             <input type="submit" value="Зареєструватись" className="reg-btn" />
           </form>
         </div>
@@ -65,12 +65,8 @@ const AuthPage = () => {
         <div className = {classNames( "login", {"active": login}, {"":!login})}>
           <form>
             <h2>Вхід</h2>
-            <input type="email" className="log-input" placeholder="Електронна пошта" />
-            <input
-              type="password"
-              className="log-input"
-              placeholder="Пароль"
-            />
+            <input type="email" className="log-input" placeholder="Електронна пошта" required/>
+            <input type="password" className="log-input" placeholder="Пароль" required/>
             <input type="submit" value="Увійти" className="log-btn" />
 
             {/* <a href="#" className="forg-pass">
