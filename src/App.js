@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import RegisterPage from "./components/auth/Register";
 import LoginPage from "./components/auth/Login";
 import MainPage from "./components/MainPage";
+import AuthPage from "./components/auth/Auth";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>

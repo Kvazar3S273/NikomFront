@@ -40,6 +40,11 @@ const Navbar = () => {
 
             <ul className="navbar-nav">
               <li className="nav-item">
+                <Link className="nav-link" to="/auth">
+                  Auth
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   Вхід
                 </Link>
