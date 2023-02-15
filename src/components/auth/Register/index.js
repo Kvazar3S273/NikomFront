@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import authService from "../../../services/auth.service";
 import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { REGISTER } from "../../../constants/actionTypes";
 import MyPhotoInput from "../../common/MyPhotoInput";
+import { RegisterUser } from "../../../actions/auth";
+import EclipseWidget from "../../common/eclipse";
 
 const RegisterPage = () => {
   const initState = {
@@ -20,12 +22,18 @@ const RegisterPage = () => {
 
   const navigator = useNavigate();
   const dispatch = useDispatch();
+  const {loading} = useSelector(state => state.auth);
   const refFormik = useRef();
   const onSubmitHandler = async (values) => {
     try {
-      const result = await authService.register(values);
-      console.log("Server is good", result);
-      dispatch({type: REGISTER, payload: values.email});
+
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value])=>formData.append(key, value));
+
+      // const result = await authService.register(values);
+      // console.log("Server is good", result);
+      // dispatch({type: REGISTER, payload: values.email});
+      const result = await dispatch(RegisterUser(formData));
       navigator("/");
     } catch (error) {
       console.log("Server is bad", error.response);
@@ -82,6 +90,7 @@ const RegisterPage = () => {
           </Form>
         </Formik>
       </div>
+      {loading && <EclipseWidget/>}
     </div>
   );
 };
