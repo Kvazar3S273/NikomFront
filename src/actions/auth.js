@@ -1,4 +1,4 @@
-import { REGISTER, REGISTER_BEGIN } from "../constants/actionTypes";
+import { REGISTER, REGISTER_BEGIN, REGISTER_FAILED } from "../constants/actionTypes";
 import authService from "../services/auth.service";
 
 export const RegisterUser = (model) => async (dispatch) => {
@@ -9,6 +9,7 @@ export const RegisterUser = (model) => async (dispatch) => {
         return Promise.resolve(result);
     }
     catch(err) {
+        dispatch({type: REGISTER_FAILED});
         console.log("Problem register");
         return Promise.reject(err);
     }
