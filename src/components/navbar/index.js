@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const {isAuth, username} = useSelector(redux => redux.auth);
-  console.log("Auth user info", isAuth);
+  // console.log("Auth user info", isAuth);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">

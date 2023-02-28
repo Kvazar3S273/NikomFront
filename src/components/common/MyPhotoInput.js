@@ -1,4 +1,4 @@
-import { useField } from "formik";
+// import { useField } from "formik";
 import React, { useState } from "react";
 
 const MyPhotoInput = ({ 
@@ -19,7 +19,7 @@ const MyPhotoInput = ({
     <div className="mb-3">
       <label htmlFor={field} className="form-label">
         <img src= {photo}
-            alt="Default image"
+            alt="Default"
             width="200px"
             style={{cursor:"pointer"}}/>
       </label>

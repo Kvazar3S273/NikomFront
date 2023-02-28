@@ -1,10 +1,11 @@
 import { Formik, Form } from "formik";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import authService from "../../../services/auth.service";
+// import authService from "../../../services/auth.service";
 import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { REGISTER } from "../../../constants/actionTypes";
 import MyPhotoInput from "../../common/MyPhotoInput";
 import { RegisterUser } from "../../../actions/auth";
@@ -22,9 +23,9 @@ const RegisterPage = () => {
 
   const navigator = useNavigate();
   const dispatch = useDispatch();
-  const {loading} = useSelector(state => state.auth);
+  const { loading, errors } = useSelector(state => state.auth);
   const refFormik = useRef();
-  const onSubmitHandler = async (values) => {
+  const onSubmitHandler = async (values, {setErrors}) => {
     try {
 
       const formData = new FormData();
@@ -32,11 +33,11 @@ const RegisterPage = () => {
 
       // const result = await authService.register(values);
       // console.log("Server is good", result);
-      // dispatch({type: REGISTER, payload: values.email});
-      const result = await dispatch(RegisterUser(formData));
+      dispatch({type: REGISTER, payload: values.email});
+      dispatch(RegisterUser(formData));
       navigator("/");
     } catch (error) {
-      console.log("Server is bad", error.response);
+      console.log("Server is bad register from", errors);
     }
   };
 
