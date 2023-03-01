@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import authService from "../../../services/auth.service";
 import MyTextInput from "../../common/MyTextInput";
@@ -23,23 +23,51 @@ const RegisterPage = () => {
 
   const navigator = useNavigate();
   const dispatch = useDispatch();
-  const { loading, errors } = useSelector(state => state.auth);
+  const { loading } = useSelector(state => state.auth);
   const refFormik = useRef();
-  const onSubmitHandler = async (values, {setErrors}) => {
+  const titleRef = useRef();
+  
+  const onSubmitHandler = async (values) => {
+
     try {
 
       const formData = new FormData();
-      Object.entries(values).forEach(([key, value])=>formData.append(key, value));
-
-      // const result = await authService.register(values);
-      // console.log("Server is good", result);
-      dispatch({type: REGISTER, payload: values.email});
-      dispatch(RegisterUser(formData));
-      navigator("/");
-    } catch (error) {
-      console.log("Server is bad register from", errors);
+      Object.entries(values).forEach(([key, value]) => formData.append(key, value));
+      console.log("key values", values);
+      // dispatch({type: REGISTER, payload: values.email});
+      dispatch(RegisterUser(formData))
+      .then(result =>
+        {
+          navigator("/");
+        })
+        .catch(ex => {
+          let answer_errors = {
+            email: ''
+          };
+          Object.entries(ex.errors).forEach(([key, values]) => {
+            let str = '';
+            values.forEach(text => {
+              str += text + " ";
+            });
+            answer_errors.email = str;
+          })
+        })
+        titleRef.current.scrollIntoView({ behavior: 'smooth' });
+    } catch (problem) {
+      var res = problem.response.data.errors;
+      console.log("Another errors:", res);
     }
-  };
+  }
+
+  const { errors } = useSelector(res => res.auth);
+
+    useEffect(() => {
+        refFormik.current.setErrors({
+           "email": errors
+        })       
+      }, [errors]);  
+
+
 
   return (
     <div className="row">
