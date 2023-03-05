@@ -30,4 +30,8 @@ const MyTextInput = ({ label, ...props }) => {
     );
   };
 
+  MyTextInput.defaultProps = {
+    type: "text"
+}
+
 export default MyTextInput;

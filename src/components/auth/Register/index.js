@@ -6,7 +6,7 @@ import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { REGISTER } from "../../../constants/actionTypes";
+import { REGISTER, ERRORS } from "../../../constants/actionTypes";
 import MyPhotoInput from "../../common/MyPhotoInput";
 import { RegisterUser } from "../../../actions/auth";
 import EclipseWidget from "../../common/eclipse";
@@ -23,14 +23,13 @@ const RegisterPage = () => {
 
   const navigator = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector(state => state.auth);
+  const { loading, errorvalid } = useSelector(state => state.auth);
   const refFormik = useRef();
   const titleRef = useRef();
   
-  const onSubmitHandler = async (values) => {
+  const onSubmitHandler = (values) => {
 
     try {
-
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => formData.append(key, value));
       console.log("key values", values);
@@ -38,18 +37,24 @@ const RegisterPage = () => {
       dispatch(RegisterUser(formData))
       .then(result =>
         {
-          navigator("/");
+          console.log("Result",result);
+          navigator("/user");
         })
         .catch(ex => {
+          console.log("erre",ex);
           let answer_errors = {
             email: ''
           };
           Object.entries(ex.errors).forEach(([key, values]) => {
+            console.log("[key]", key);
+            console.log("[val]", values);
             let str = '';
+
             values.forEach(text => {
               str += text + " ";
             });
             answer_errors.email = str;
+            dispatch({ type: ERRORS, payload: answer_errors.email });
           })
         })
         titleRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -59,13 +64,13 @@ const RegisterPage = () => {
     }
   }
 
-  const { errors } = useSelector(res => res.auth);
-
-    useEffect(() => {
-        refFormik.current.setErrors({
-           "email": errors
-        })       
-      }, [errors]);  
+  useEffect(() => {
+    refFormik.current.setErrors({
+       "email": errorvalid           
+    })   
+    console.log("useess",errorvalid); 
+    
+  }, [errorvalid]); 
 
 
 
@@ -76,7 +81,7 @@ const RegisterPage = () => {
 
         <Formik
           innerRef={refFormik}
-          initialValues={{ initState }}
+          initialValues={ initState }
           validationSchema={validationFields()}
           onSubmit={onSubmitHandler}
           >

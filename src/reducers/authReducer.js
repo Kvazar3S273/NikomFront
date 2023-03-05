@@ -1,10 +1,10 @@
-import { LOGIN, REGISTER, REGISTER_BEGIN, REGISTER_FAILED } from "../constants/actionTypes";
+import { LOGIN, REGISTER, REGISTER_BEGIN, REGISTER_FAILED, ERRORS } from "../constants/actionTypes";
 
 const initialState = {
   isAuth: false,
   username: "",
   loading: false,
-  errors: {}
+  errorvalid: ''
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,8 +19,12 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_FAILED: {
       return {
         ...state,
-        loading: false,
-        errors: payload
+        loading: false
+      }
+    }
+    case ERRORS: {
+      return {
+          errorvalid: payload
       }
     }
     case REGISTER: 
