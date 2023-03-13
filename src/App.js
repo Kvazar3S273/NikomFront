@@ -1,23 +1,28 @@
 import "./App.css";
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
 import RegisterPage from "./components/auth/Register";
 import LoginPage from "./components/auth/Login";
 import MainPage from "./components/MainPage";
 import AuthPage from "./components/auth/Auth";
+import DefaultLayout from "./components/containers/DefaultLayout";
+import AdminLayout from "./components/containers/AdminLayout";
 
 const App = () => {
   return (
     <>
-      
       <BrowserRouter>
-      <Navbar />
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<MainPage />} />
+
+            <Route exact path="/login" element={<LoginPage />} />
+            <Route exact path="/register" element={<RegisterPage />} />
+            <Route exact path="/auth" element={<AuthPage />} />
+            {/* <Route exact path="/page404" element={<Page404 />} /> */}
+          </Route>
+
+          <Route path="/admin" element={<AdminLayout />}></Route>
         </Routes>
       </BrowserRouter>
     </>

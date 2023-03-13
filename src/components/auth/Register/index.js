@@ -38,7 +38,7 @@ const RegisterPage = () => {
       .then(result =>
         {
           console.log("Result",result);
-          navigator("/user");
+          navigator("/");
         })
         .catch(ex => {
           console.log("erre",ex);
