@@ -1,9 +1,11 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import MyTextInput from "../../common/MyTextInput";
+import { useNavigate } from "react-router-dom";
 import validationFields from "./validation";
 import { useDispatch } from "react-redux";
-import { LOGIN } from "../../../constants/actionTypes";
+import { LoginUser } from '../Login/loginAction';
+import { ERRORS } from "../../../constants/actionTypes";
 
 const LoginPage = () => {
   const initState = {
@@ -11,12 +13,41 @@ const LoginPage = () => {
     password: "",
   };
   const dispatch = useDispatch();
-  
-  const onSubmitHandler = (values) => {
-    dispatch({type: LOGIN, payload: values.email});
-    console.log("values submit", values)
-  }
+  const navigator = useNavigate();
 
+  const onSubmitHandler = async (values) => {
+    try {
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value]) =>
+        formData.append(key, value)
+      );
+      dispatch(LoginUser(formData))
+        .then((result) => {
+          if(result.roles==="admin") {
+            navigator("/admin");
+            return;
+          }
+          navigator("/");
+        })
+        .catch((ex) => {
+          let answer_errors = {
+            email: "",
+          };
+          Object.entries(ex.errors).forEach(([key, values]) => {
+            let str = "";
+            values.forEach((text) => {
+              str += text + " ";
+            });
+            answer_errors.email = str;
+            dispatch({ type: ERRORS, payload: answer_errors.email });
+          });
+        });
+    } catch (problem) {
+      var res = problem.response.data.errors;
+      console.log("Another errors:", res);
+    }
+  };
+  
   return (
     <div className="row">
       <div className="offset-md-4 col-md-4">

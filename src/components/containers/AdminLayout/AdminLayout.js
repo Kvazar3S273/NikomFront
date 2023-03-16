@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 // import Navigation from "./Navigation";
 // import Topbar from "./Topbar";
 // import MainPanel from "./MainPanel";
-// import { isRole } from '../../auth/register/authAction';
-// import { Link } from "react-router-dom";
+import { isRole } from '../../auth/Register/authAction';
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 
@@ -13,7 +13,7 @@ const AdminLayout = () => {
   const { isAuth, user } = useSelector(redux => redux.auth);
 
   return (
-    // isAuth && isRole(user, 'admin') ?
+    isAuth && isRole(user, 'admin') ?
     <>
       <main>
         {<Outlet />}
@@ -28,8 +28,8 @@ const AdminLayout = () => {
         </div>
       </main>
     </>
-    // :
-    // <Link to='/' />
+    :
+    <Link to='/' />
   );
 };
 
