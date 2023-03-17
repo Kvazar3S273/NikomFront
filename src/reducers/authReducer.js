@@ -1,10 +1,18 @@
-import { LOGIN, REGISTER, REGISTER_BEGIN, REGISTER_FAILED, ERRORS } from "../constants/actionTypes";
+import {
+  LOGIN,
+  LOGIN_AUTH,
+  LOG_OUT,
+  REGISTER,
+  REGISTER_BEGIN,
+  REGISTER_FAILED,
+  ERRORS,
+} from "../constants/actionTypes";
 
 const initialState = {
   isAuth: false,
   username: "",
   loading: false,
-  errorvalid: ''
+  errorvalid: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -13,30 +21,42 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_BEGIN: {
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
+    }
+    case LOGIN_AUTH: {
+      return {
+        isAuth: true,
+        user: payload,
+      };
+    }
+    case LOG_OUT: {
+      return {
+        isAuth: false,
+        user: {},
+      };
     }
     case REGISTER_FAILED: {
       return {
         ...state,
-        loading: false
-      }
+        loading: false,
+      };
     }
     case ERRORS: {
       return {
-          errorvalid: payload
-      }
+        errorvalid: payload,
+      };
     }
-    case REGISTER: 
+    case REGISTER:
     case LOGIN: {
       return {
         isAuth: true,
         username: payload,
-        loading: false
+        loading: false,
       };
     }
     default: {
-        return state;
+      return state;
     }
   }
 };

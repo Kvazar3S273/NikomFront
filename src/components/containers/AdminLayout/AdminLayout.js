@@ -12,7 +12,9 @@ import { useSelector } from 'react-redux';
 const AdminLayout = () => {
   const { isAuth, user } = useSelector(redux => redux.auth);
 
-  return (
+  console.log('AdminLayout', user);
+
+return (
     isAuth && isRole(user, 'admin') ?
     <>
       <main>
