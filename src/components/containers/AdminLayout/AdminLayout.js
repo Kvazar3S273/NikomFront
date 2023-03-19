@@ -10,12 +10,12 @@ import { useSelector } from 'react-redux';
 
 
 const AdminLayout = () => {
-  const { isAuth, user } = useSelector(redux => redux.auth);
+  const { isAuth, username } = useSelector(redux => redux.auth);
 
-  console.log('AdminLayout', user);
+  console.log('AdminLayout', username);
 
 return (
-    isAuth && isRole(user, 'admin') ?
+    isAuth && isRole(username, 'admin') ?
     <>
       <main>
         {<Outlet />}
@@ -26,6 +26,7 @@ return (
             {/* <Topbar /> */}
             {/* <MainPanel/> */}
             <h1>Admin panel</h1>
+            
           </div>
         </div>
       </main>

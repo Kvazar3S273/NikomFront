@@ -7,6 +7,8 @@ import MainPage from "./components/MainPage";
 import AuthPage from "./components/auth/Auth";
 import DefaultLayout from "./components/containers/DefaultLayout";
 import AdminLayout from "./components/containers/AdminLayout";
+import Catalog from "./components/pages/Catalog";
+import Contacts from "./components/pages/Contacts";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
             <Route exact path="/login" element={<LoginPage />} />
             <Route exact path="/register" element={<RegisterPage />} />
             <Route exact path="/auth" element={<AuthPage />} />
+            <Route exact path="/catalog" element={<Catalog />} />
+            <Route exact path="/contacts" element={<Contacts />} />
             {/* <Route exact path="/page404" element={<Page404 />} /> */}
           </Route>
 

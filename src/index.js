@@ -7,6 +7,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+import { SetUserToken } from './components/auth/Login/loginAction';
+import { BrowserRouter } from 'react-router-dom';
+
+const token = localStorage.getItem('username'); 
+ if (token) { 
+  store.dispatch(SetUserToken(token))
+ }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

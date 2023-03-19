@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import MyNavbar from "../../navbar";
 // import { ScrollToTop } from "react-simple-scroll-up";
 // import Footer from "../../footer/footer";
-import Navbar from "../../navbar";
 
 const DefaultLayout = () => {
   return (
     <>
       
-      <Navbar />
+      <MyNavbar />
       
       <main>{<Outlet />}</main>
       

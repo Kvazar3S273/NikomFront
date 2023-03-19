@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   isAuth: false,
-  username: "",
+  username: {},
   loading: false,
   errorvalid: "",
 };
@@ -27,13 +27,13 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_AUTH: {
       return {
         isAuth: true,
-        user: payload,
+        username: payload,
       };
     }
     case LOG_OUT: {
       return {
         isAuth: false,
-        user: {},
+        username: {},
       };
     }
     case REGISTER_FAILED: {
