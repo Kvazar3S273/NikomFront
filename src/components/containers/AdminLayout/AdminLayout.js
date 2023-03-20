@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { isRole } from '../../auth/Register/authAction';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import AdminNavbar from "./AdminNavbar";
 
 
 const AdminLayout = () => {
@@ -15,25 +16,23 @@ const AdminLayout = () => {
   console.log('AdminLayout', username);
 
 return (
-    isAuth && isRole(username, 'admin') ?
-    <>
-      <main>
-        {<Outlet />}
-        <div className="adminContainer">
-          {/* <Navigation /> */}
-
-          <div className="main">
-            {/* <Topbar /> */}
-            {/* <MainPanel/> */}
-            <h1>Admin panel</h1>
-            
-          </div>
+  isAuth && isRole(username, "admin") ? 
+  <>
+    <main>
+      {<Outlet />}
+      <div className="adminContainer">
+        <AdminNavbar />
+        <div className="main">
+          {/* <Topbar /> */}
+          {/* <MainPanel/> */}
+          <h1>Admin panel</h1>
         </div>
-      </main>
-    </>
-    :
-    <Link to='/' />
-  );
+      </div>
+    </main>
+  </>
+  : 
+  <Link to="/" />
+);
 };
 
 export default AdminLayout;

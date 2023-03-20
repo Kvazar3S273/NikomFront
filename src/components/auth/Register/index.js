@@ -6,7 +6,7 @@ import MyTextInput from "../../common/MyTextInput";
 import validationFields from "./validation";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { REGISTER, ERRORS } from "../../../constants/actionTypes";
+import { ERRORS } from "../../../constants/actionTypes";
 import MyPhotoInput from "../../common/MyPhotoInput";
 import { RegisterUser } from "../../../actions/auth";
 import EclipseWidget from "../../common/eclipse";
