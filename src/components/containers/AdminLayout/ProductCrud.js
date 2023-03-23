@@ -5,11 +5,17 @@ import {
     faPenToSquare
   } from "@fortawesome/free-solid-svg-icons";
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const Catalog = () => {
+
+const ProductCrud = () => {
   return (
     <div>
-      <h1 className="text-center mt-3 mb-3">Каталог товарів</h1>
-        
+      <h1 className="text-center mt-3 mb-3">Робота зі списком товарів</h1>
+      <h5 className="text-center mb-3">
+        Перегляд, додавання, редагування, видалення
+      </h5>
+      <div className="d-grid col-5 mx-auto mb-3">
+          <button type="button" class="btn btn-warning ">Додати новий товар</button>
+        </div>
       <div className="row">
         <div className="col-md-1"></div>
         <div className="col-md-10">
@@ -31,13 +37,22 @@ const Catalog = () => {
                 <td>КТ315</td>
                 <td>Транзистор</td>
                 <td>NPN</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>3.50</td>
                 <td>
                   <i style={{ color: "#03a9f4", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faPenToSquare} /></i>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
                 </td>
               </tr>
               <tr>
@@ -45,13 +60,22 @@ const Catalog = () => {
                 <td>PIC16F628A</td>
                 <td>Мікроконтролер</td>
                 <td>МС</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>83.00</td>
                 <td>
                   <i style={{ color: "#03a9f4", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faPenToSquare} /></i>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
                 </td>
               </tr>
               <tr>
@@ -59,13 +83,22 @@ const Catalog = () => {
                 <td>Arduino Nano</td>
                 <td>Мікроконтролер</td>
                 <td>Модуль</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>105.00</td>
                 <td>
                   <i style={{ color: "#03a9f4", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faPenToSquare} /></i>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
                 </td>
               </tr>
               <tr>
@@ -73,16 +106,24 @@ const Catalog = () => {
                 <td>1N4148</td>
                 <td>Діод</td>
                 <td>Малопотужний</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>2.00</td>
                 <td>
                   <i style={{ color: "#03a9f4", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faPenToSquare} /></i>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </i>
                 </td>
               </tr>
-              
             </tbody>
           </table>
         </div>
@@ -92,4 +133,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default ProductCrud;

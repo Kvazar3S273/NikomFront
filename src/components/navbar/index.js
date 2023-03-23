@@ -75,6 +75,12 @@ const MyNavbar = () => {
               Каталог
             </Link>
           </Nav>
+          
+          <Nav className="me-auto" onClick={() => setNavExpanded(false)}>
+            <Link className="nav-link" aria-current="page" to="/addproduct">
+              Додати товар
+            </Link>
+          </Nav>
 
           <Nav className="me-auto" onClick={() => setNavExpanded(false)}>
             <Link className="nav-link" aria-current="page" to="/contacts">

@@ -8,6 +8,7 @@ import { isRole } from '../../auth/Register/authAction';
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import AdminNavbar from "./AdminNavbar";
+import ProductCrud from "./ProductCrud";
 
 
 const AdminLayout = () => {
@@ -23,9 +24,8 @@ return (
       <div className="adminContainer">
         <AdminNavbar />
         <div className="main">
-          {/* <Topbar /> */}
-          {/* <MainPanel/> */}
-          <h1>Admin panel</h1>
+          <ProductCrud />
+          {/* <h1>Admin panel</h1> */}
         </div>
       </div>
     </main>
