@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useRef} from "react";
+import MyPhotoInput from "../../common/MyPhotoInput";
+
 
 const AddProduct = () => {
+  const refFormik = useRef();
+
   return (
     <div>
       <h1 className="text-center mt-3 mb-3">Додавання товару</h1>
@@ -84,6 +88,10 @@ const AddProduct = () => {
               </div>
             </div>
 
+            <div className="d-grid gap-1 mt-4">
+              <MyPhotoInput refFormik={refFormik} field="photo" />
+            </div>
+
             <div className="form-group mb-3">
               <label for="price">Ціна:</label>
               <input
@@ -94,9 +102,9 @@ const AddProduct = () => {
               />
             </div>
             <div className="d-grid gap-1 mt-4">
-                <button type="submit" className="btn btn-lg btn-success">
-                    Додати товар
-                </button>
+              <button type="submit" className="btn btn-lg btn-success">
+                Додати товар
+              </button>
             </div>
           </form>
         </div>
