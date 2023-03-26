@@ -6,7 +6,7 @@ import { logoutservice } from "../../services/logout.service";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import logo from "../../../src/logoN.png"
 import { isRole } from "../auth/Register/authAction";
-
+import "./index.css"
 const MyNavbar = () => {
 
   const navigator = useNavigate();

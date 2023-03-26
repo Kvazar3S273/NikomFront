@@ -1,9 +1,51 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import MyPhotoInput from "../../common/MyPhotoInput";
-
+import "./styles.css"
 
 const AddProduct = () => {
-  const refFormik = useRef();
+  // const refFormik = useRef();
+  var images = [];
+  
+  const [display, setDisplay] = useState('none');
+
+  const openModal = () => {
+      setDisplay('block');
+  }
+  const closeModal = () => {
+      setDisplay('none');
+      document.getElementById("imageContainer").innerHTML = "";
+      images = [];
+  }
+
+  // function closeModal() {
+  //   document.getElementById("uploadModal").style.display = "none";
+  //   document.getElementById("imageContainer").innerHTML = ""; // Clear the container
+  //   images = []; // Clear the images array
+  // }
+
+  function uploadImage() {
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = function(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function() {
+        var image = new Image();
+        image.src = reader.result;
+        image.className = "image";
+        document.getElementById("imageContainer").appendChild(image);
+            images.push(image);
+            // Add another "Upload Image" button
+            var uploadButton = document.createElement("button");
+            uploadButton.onclick = uploadImage;
+            uploadButton.innerText = "Upload Image";
+            // document.getElementById("modal-content").appendChild(uploadButton);
+      };
+      reader.readAsDataURL(file);
+    };
+    input.click();
+  }
 
   return (
     <div>
@@ -89,7 +131,23 @@ const AddProduct = () => {
             </div>
 
             <div className="d-grid gap-1 mt-4">
-              <MyPhotoInput refFormik={refFormik} field="photo" />
+              {/* <MyPhotoInput refFormik={refFormik} field="photo" /> */}
+              <button 
+              type="button" 
+              className="btn btn-lg btn-primary"
+              onClick={openModal}>
+                Завантаження зображень
+              </button>
+              
+              <div id="uploadModal" style={{display: display}} className="modal">
+                  <div className="modal-content">
+                    <h2>Завантаження зображень</h2>
+                    <div className="image-container" id="imageContainer"></div>
+                    <button onClick={uploadImage()}>Додати зображення</button>
+                    <button onclick={closeModal}>OK</button>
+                </div>
+              </div>
+
             </div>
 
             <div className="form-group mb-3">
