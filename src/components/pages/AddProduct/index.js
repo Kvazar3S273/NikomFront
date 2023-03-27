@@ -1,58 +1,26 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import MyPhotoInput from "../../common/MyPhotoInput";
-import "./styles.css"
+import "./styles.css";
+import ImageUploading from "react-images-uploading";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AddProduct = () => {
-  // const refFormik = useRef();
-  var images = [];
-  
-  const [display, setDisplay] = useState('none');
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 69;
 
-  const openModal = () => {
-      setDisplay('block');
-  }
-  const closeModal = () => {
-      setDisplay('none');
-      document.getElementById("imageContainer").innerHTML = "";
-      images = [];
-  }
-
-  // function closeModal() {
-  //   document.getElementById("uploadModal").style.display = "none";
-  //   document.getElementById("imageContainer").innerHTML = ""; // Clear the container
-  //   images = []; // Clear the images array
-  // }
-
-  function uploadImage() {
-    var input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = function(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
-      reader.onload = function() {
-        var image = new Image();
-        image.src = reader.result;
-        image.className = "image";
-        document.getElementById("imageContainer").appendChild(image);
-            images.push(image);
-            // Add another "Upload Image" button
-            var uploadButton = document.createElement("button");
-            uploadButton.onclick = uploadImage;
-            uploadButton.innerText = "Upload Image";
-            // document.getElementById("modal-content").appendChild(uploadButton);
-      };
-      reader.readAsDataURL(file);
-    };
-    input.click();
-  }
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
 
   return (
     <div>
       <h1 className="text-center mt-3 mb-3">Додавання товару</h1>
       <div className="row">
         <div className="col-md-8 offset-md-2">
-          <form>
+          <div>
             <div className="form-group mb-3">
               <label for="name">Найменування:</label>
               <input
@@ -131,26 +99,86 @@ const AddProduct = () => {
             </div>
 
             <div className="d-grid gap-1 mt-4">
-              {/* <MyPhotoInput refFormik={refFormik} field="photo" /> */}
-              <button 
-              type="button" 
-              className="btn btn-lg btn-primary"
-              onClick={openModal}>
-                Завантаження зображень
-              </button>
-              
-              <div id="uploadModal" style={{display: display}} className="modal">
-                  <div className="modal-content">
-                    <h2>Завантаження зображень</h2>
-                    <div className="image-container" id="imageContainer"></div>
-                    <button onClick={uploadImage()}>Додати зображення</button>
-                    <button onclick={closeModal}>OK</button>
-                </div>
-              </div>
+              <ImageUploading
+                multiple
+                value={images}
+                onChange={onChange}
+                maxNumber={maxNumber}
+                dataURLKey="data_url"
+              >
+                {({
+                  imageList,
+                  onImageUpload,
+                  onImageRemoveAll,
+                  onImageUpdate,
+                  onImageRemove,
+                  isDragging,
+                  dragProps,
+                }) => (
+                  // write your building UI
+                  <div className="upload__image-wrapper">
+                    <div className="row">
+                      <div className="col-md-9">
+                        <div
+                          class="mt-4 p-5 bg-warning text-dark text-center rounded"
+                          style={isDragging ? { color: "red" } : undefined}
+                          onClick={onImageUpload}
+                          {...dragProps}
+                        >
+                          <b>Натисніть на блок</b> <br /> або перетягніть сюди
+                          одне чи декілька зображень
+                        </div>
+                      </div>
+                      <div className="col-md-3">
+                        <div
+                          class="mt-4 p-5 bg-danger text-white text-center rounded"
+                          onClick={onImageRemoveAll}
+                        >
+                          Видалити всі <br /> зображення
+                        </div>
+                      </div>
+                    </div>
 
+                    <div className="row mt-3">
+                      {imageList.map((image, index) => (
+                        <div
+                          key={index}
+                          className="col-md-3 col-sm-6 col-6 image-item"
+                        >
+                          <img
+                            src={image["data_url"]}
+                            alt="hello"
+                            style={{ width: "10vw", height: "15vh" }}
+                          />
+                          <div className="image-item__btn-wrapper">
+                            <button
+                              type="button"
+                              className="btn btn-primary mb-1"
+                              onClick={() => onImageUpdate(index)}
+                            >
+                              <i style={{ color: "#fff", fontSize: "14px" }}>
+                                <FontAwesomeIcon icon={faPenToSquare} />
+                              </i>
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-danger"
+                              onClick={() => onImageRemove(index)}
+                            >
+                              <i style={{ color: "#fff", fontSize: "14px" }}>
+                                <FontAwesomeIcon icon={faTrash} />
+                              </i>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </ImageUploading>
             </div>
 
-            <div className="form-group mb-3">
+            <div className="form-group mt-3 mb-3">
               <label for="price">Ціна:</label>
               <input
                 type="text"
@@ -159,12 +187,13 @@ const AddProduct = () => {
                 placeholder="Введіть ціну товару"
               />
             </div>
+
             <div className="d-grid gap-1 mt-4">
               <button type="submit" className="btn btn-lg btn-success">
                 Додати товар
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

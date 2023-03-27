@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "../../../../src/logoN.png";
-import {
-    faTrash,
-    faPenToSquare
-  } from "@fortawesome/free-solid-svg-icons";
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//     faTrash,
+//     faPenToSquare
+//   } from "@fortawesome/free-solid-svg-icons";
+//   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Catalog = () => {
   return (
     <div>
@@ -34,10 +34,10 @@ const Catalog = () => {
                 <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
                 <td>3.50</td>
                 <td>
-                  <i style={{ color: "#03a9f4", fontSize: "25px" }}>
+                  {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
                   <FontAwesomeIcon icon={faPenToSquare} /></i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                  <FontAwesomeIcon icon={faTrash} /></i> */}
                 </td>
               </tr>
               <tr>
@@ -48,10 +48,10 @@ const Catalog = () => {
                 <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
                 <td>83.00</td>
                 <td>
-                  <i style={{ color: "#03a9f4", fontSize: "25px" }}>
+                  {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
                   <FontAwesomeIcon icon={faPenToSquare} /></i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                  <FontAwesomeIcon icon={faTrash} /></i> */}
                 </td>
               </tr>
               <tr>
@@ -62,10 +62,10 @@ const Catalog = () => {
                 <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
                 <td>105.00</td>
                 <td>
-                  <i style={{ color: "#03a9f4", fontSize: "25px" }}>
+                  {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
                   <FontAwesomeIcon icon={faPenToSquare} /></i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                  <FontAwesomeIcon icon={faTrash} /></i> */}
                 </td>
               </tr>
               <tr>
@@ -76,10 +76,10 @@ const Catalog = () => {
                 <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
                 <td>2.00</td>
                 <td>
-                  <i style={{ color: "#03a9f4", fontSize: "25px" }}>
+                  {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
                   <FontAwesomeIcon icon={faPenToSquare} /></i>
                   <i style={{ color: "#E60026", fontSize: "25px" }}>
-                  <FontAwesomeIcon icon={faTrash} /></i>
+                  <FontAwesomeIcon icon={faTrash} /></i> */}
                 </td>
               </tr>
               
