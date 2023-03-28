@@ -1,11 +1,15 @@
-import React, { useRef, useState } from "react";
-import MyPhotoInput from "../../common/MyPhotoInput";
+import React, { useState } from "react";
 import "./styles.css";
 import ImageUploading from "react-images-uploading";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import 'react-image-crop/dist/ReactCrop.css';
+import Crop from "./EasyCrop";
+import EasyCrop from "./EasyCrop";
+
 const AddProduct = () => {
+
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
 
@@ -14,6 +18,7 @@ const AddProduct = () => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
+
 
   return (
     <div>
@@ -193,6 +198,8 @@ const AddProduct = () => {
                 Додати товар
               </button>
             </div>
+
+            
           </div>
         </div>
       </div>
@@ -201,3 +208,4 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
