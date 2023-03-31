@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { LOG_OUT } from "../../constants/actionTypes";
 import { logoutservice } from "../../services/logout.service";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import logo from "../../../src/logoN.png"
+import logo from "../../../src/logoN.png";
 import { isRole } from "../auth/Register/authAction";
-import "./index.css"
+import "./index.css";
 const MyNavbar = () => {
 
   const navigator = useNavigate();

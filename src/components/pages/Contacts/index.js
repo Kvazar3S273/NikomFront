@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import EasyCrop from './EasyCrop';
 import 'react-image-crop/dist/ReactCrop.css';
 import Crop from "./EasyCrop";
+import "./index.css";
 
 const Contacts = () => {
   const [image, setImage] = useState(null);

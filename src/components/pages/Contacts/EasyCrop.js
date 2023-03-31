@@ -43,7 +43,7 @@ const EasyCrop = ({ image }) => {
         Crop
       </button>
       <div
-        className="container"
+        className="containerCrop"
         style={{
           display: image === null || croppedImage !== null ? "none" : "block",
         }}
