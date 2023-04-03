@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import "./styles.css";
 import ImageUploading from "react-images-uploading";
-import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPenToSquare, faCrop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import 'react-image-crop/dist/ReactCrop.css';
-import Crop from "./EasyCrop";
-import EasyCrop from "./EasyCrop";
+import EasyCrop from "../Contacts/EasyCrop";
 
 const AddProduct = () => {
 
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
+  const [imageCrop, setImageCrop] = useState(null);
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
+    console.log("Завантажені зображення: ", imageList, addUpdateIndex);
     setImages(imageList);
   };
+
+  const onCrop = (image) => {
+    console.log("Image for crop", image);
+    setImageCrop(image);
+    console.log("Image setImageCrop", imageCrop);
+    // return(
+    //   <div>
+    //     {setImageCrop(image) && (
+    //     <EasyCrop image = {imageCrop} />)}
+    //   </div>
+    // );
+  }
 
 
   return (
@@ -167,17 +179,33 @@ const AddProduct = () => {
                             </button>
                             <button
                               type="button"
-                              className="btn btn-danger"
+                              className="btn btn-danger mb-1"
                               onClick={() => onImageRemove(index)}
                             >
                               <i style={{ color: "#fff", fontSize: "14px" }}>
                                 <FontAwesomeIcon icon={faTrash} />
                               </i>
                             </button>
+                            <button
+                              type="button"
+                              className="btn btn-success"
+                              onClick={() => onCrop(image)}
+                            >
+                              <i style={{ color: "#fff", fontSize: "14px" }}>
+                                <FontAwesomeIcon icon={faCrop} />
+                              </i>
+                            </button>
+                            
+
                           </div>
                         </div>
                       ))}
                     </div>
+                        <div> 
+                            {imageCrop!=null ? (
+                              <EasyCrop image = {imageCrop}/>
+                            ) : ""}
+                        </div>
                   </div>
                 )}
               </ImageUploading>
