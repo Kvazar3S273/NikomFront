@@ -5,7 +5,7 @@ import { faTrash, faPenToSquare, faCrop } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import 'react-image-crop/dist/ReactCrop.css';
-import EasyCrop from "../Contacts/EasyCrop";
+import EasyCrop from "./EasyCrop";
 
 const AddProduct = () => {
 
@@ -21,7 +21,7 @@ const AddProduct = () => {
 
   const onCrop = (image) => {
     console.log("Image for crop", image);
-    setImageCrop(image);
+    setImageCrop(image.data_url);
     console.log("Image setImageCrop", imageCrop);
     // return(
     //   <div>
@@ -135,10 +135,10 @@ const AddProduct = () => {
                   // write your building UI
                   <div className="upload__image-wrapper">
                     <div className="row">
-                      <div className="col-md-9">
+                      <div className="col-md-8">
                         <div
                           class="mt-4 p-5 bg-warning text-dark text-center rounded"
-                          style={isDragging ? { color: "red" } : undefined}
+                          style={isDragging ? { color: "red"} : undefined}
                           onClick={onImageUpload}
                           {...dragProps}
                         >
@@ -146,7 +146,7 @@ const AddProduct = () => {
                           одне чи декілька зображень
                         </div>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                         <div
                           class="mt-4 p-5 bg-danger text-white text-center rounded"
                           onClick={onImageRemoveAll}
@@ -165,7 +165,7 @@ const AddProduct = () => {
                           <img
                             src={image["data_url"]}
                             alt="hello"
-                            style={{ width: "10vw", height: "15vh" }}
+                            style={{ width: "10vw", height: "19vh" }}
                           />
                           <div className="image-item__btn-wrapper">
                             <button

@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
-import EasyCrop from './EasyCrop';
-import 'react-image-crop/dist/ReactCrop.css';
-import Crop from "./EasyCrop";
-import "./index.css";
+import React, { useState } from "react";
+import "react-image-crop/dist/ReactCrop.css";
 
 const Contacts = () => {
   const [image, setImage] = useState(null);
@@ -13,25 +10,23 @@ const Contacts = () => {
     <div>
       <h1>Сторінка Контакти</h1>
 
-      <div className="Appshka">
-      <header className="Appshka-header">
-        <label className="_coverImage-holder">
-          Upload Image
-          <input
-            type="file"
-            name="cover"
-            onChange={handleImageUpload}
-            accept="img/*"
-            style={{ display: "none" }}
-          />
-        </label>
-        <EasyCrop image={image}  />
-      </header>
+      {/* <div className="Appshka">
+        <header className="Appshka-header">
+          <label className="_coverImage-holder">
+            Upload Image
+            <input
+              type="file"
+              name="cover"
+              onChange={handleImageUpload}
+              accept="img/*"
+              style={{ display: "none" }}
+            />
+          </label>
+          <EasyCrop image={image} />
+        </header>
+      </div> */}
     </div>
-
-
-    </div>
-  )
-}
+  );
+};
 
 export default Contacts;

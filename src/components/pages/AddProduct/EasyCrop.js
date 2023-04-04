@@ -34,7 +34,7 @@ const EasyCrop = ({ image }) => {
 
   return (
     <div>
-      <button
+      <button className="btnCrop"
         style={{
           display: image === null || croppedImage !== null ? "none" : "block",
         }}
@@ -96,7 +96,7 @@ const EasyCrop = ({ image }) => {
         {croppedImage && (
           <img className="cropped-image" src={croppedImage} alt="cropped" />
         )}
-        {croppedImage && <button onClick={onClose}>close</button>}
+        {croppedImage && <button className="btnCrop" onClick={onClose}>close</button>}
       </div>
     </div>
   );

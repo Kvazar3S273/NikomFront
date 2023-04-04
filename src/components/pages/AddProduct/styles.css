@@ -1,23 +1,69 @@
-/* Style for the modal window */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+  .Appshka {
+    background-color: #c4c4c4;
+    font-family: 'Helvetica Neue', sans-serif;
   }
 
-  /* Style for the modal content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+  .Appshka-header {
+    padding-top: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+  }
+
+  label {
+    font-weight: bold;
+    padding-left: 10px;
+  }
+
+  .btnCrop {
+    z-index: 2;
+    cursor: pointer;
+    width: 100%;
+    background-color: #3a1919;
+    color: #fff;
+    padding: 20px 0;
+  }
+
+  .cropped-image {
+    height: 600px;
+    width: auto;
+  }
+
+  .cropped-image-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ._coverImage-holder {
+    padding: 25px 40px;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+
+  .containerCrop {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .crop-container {
+    height: 600px;
+    width: 600px;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    position: absolute;
+    bottom: -15px;
   }
 
   /* Style for the image container */
@@ -44,5 +90,3 @@
     flex-direction: column;
     margin-left: 10px;
   }
-
-  
