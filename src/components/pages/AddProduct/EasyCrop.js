@@ -27,9 +27,13 @@ const EasyCrop = ({ image }) => {
     }
   }, [croppedAreaPixels, rotation, image]);
 
-  const onClose = useCallback(() => {
-    setCroppedImage(null);
+  const onClose = useCallback((image) => {
+    setCroppedImage(image);
   }, []);
+
+  // const onClose = (image) => {
+  //   setCroppedImage(image);
+  // }
 
 
   return (

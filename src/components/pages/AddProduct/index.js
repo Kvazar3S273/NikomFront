@@ -165,7 +165,7 @@ const AddProduct = () => {
                           <img
                             src={image["data_url"]}
                             alt="hello"
-                            style={{ width: "10vw", height: "19vh" }}
+                            style={{ width: "10vw", height: "10vw" }}
                           />
                           <div className="image-item__btn-wrapper">
                             <button
