@@ -12,6 +12,7 @@ import Contacts from "./components/pages/Contacts";
 import ProductCrud from "./components/containers/AdminLayout/ProductCrud";
 import Users from "./components/containers/AdminLayout/Users";
 import AddProduct from "./components/pages/AddProduct";
+import UpdateProduct from "./components/pages/UpdateProduct";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route exact path="/admin/crud" element={<ProductCrud />} />
             <Route exact path="/admin/users" element={<Users />} />
             <Route exact path="/addproduct" element={<AddProduct />} />
+            <Route exact path="/updateproduct" element={<UpdateProduct />} />
             {/* <Route exact path="/page404" element={<Page404 />} /> */}
           </Route>
 
