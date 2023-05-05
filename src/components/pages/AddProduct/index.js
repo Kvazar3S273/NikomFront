@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import 'react-image-crop/dist/ReactCrop.css';
 import EasyCrop from "./EasyCrop";
+import CreateCategory from "./CreateCategory";
+import { useSelector } from "react-redux";
 
 const AddProduct = () => {
 
@@ -31,6 +33,7 @@ const AddProduct = () => {
     // );
   }
 
+  
 
   return (
     <div>
@@ -60,7 +63,10 @@ const AddProduct = () => {
                   </select>
                 </div>
                 <div className="col-md-4 d-grid gap-1 mx-auto mt-1">
-                  <button type="button" className="btn btn-warning">
+                  <button
+                    type="button"
+                    className="btn btn-warning"
+                  >
                     Створити нову категорію
                   </button>
                 </div>
@@ -138,7 +144,7 @@ const AddProduct = () => {
                       <div className="col-md-8">
                         <div
                           class="mt-4 p-5 bg-warning text-dark text-center rounded"
-                          style={isDragging ? { color: "red"} : undefined}
+                          style={isDragging ? { color: "red" } : undefined}
                           onClick={onImageUpload}
                           {...dragProps}
                         >
@@ -195,17 +201,13 @@ const AddProduct = () => {
                                 <FontAwesomeIcon icon={faCrop} />
                               </i>
                             </button>
-                            
-
                           </div>
                         </div>
                       ))}
                     </div>
-                        <div> 
-                            {imageCrop!=null ? (
-                              <EasyCrop image = {imageCrop}/>
-                            ) : ""}
-                        </div>
+                    <div>
+                      {imageCrop != null ? <EasyCrop image={imageCrop} /> : ""}
+                    </div>
                   </div>
                 )}
               </ImageUploading>
@@ -226,8 +228,6 @@ const AddProduct = () => {
                 Додати товар
               </button>
             </div>
-
-            
           </div>
         </div>
       </div>
