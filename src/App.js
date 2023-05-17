@@ -14,6 +14,7 @@ import Users from "./components/containers/AdminLayout/Users";
 import AddProduct from "./components/pages/AddProduct";
 import UpdateProduct from "./components/pages/UpdateProduct";
 import CreateCategory from "./components/pages/AddProduct/CreateCategory";
+import SingleProductPage from "./components/pages/Catalog/SingleProductPage";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route exact path="/register" element={<RegisterPage />} />
             <Route exact path="/auth" element={<AuthPage />} />
             <Route exact path="/catalog" element={<Catalog />} />
+            <Route exact path="/item" element={<SingleProductPage />} />
             <Route exact path="/contacts" element={<Contacts />} />
             <Route exact path="/admin/crud" element={<ProductCrud />} />
             <Route exact path="/admin/users" element={<Users />} />

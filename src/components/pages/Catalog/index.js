@@ -8,6 +8,8 @@ import {
 } from "../../../constants/actions/catalog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThList, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons";
+import classNames from "classnames";
+import Find from "./Find";
 
 const Catalog = () => {
   const { isCardsCatalog, isTableCatalog } = useSelector(
@@ -33,7 +35,12 @@ const Catalog = () => {
         <div className="col-md-2">
           <button
             type="button"
-            className="btn btn-secondary me-2"
+            // className="btn btn-secondary me-2"
+            className={classNames(
+              "btn me-2",
+              { "btn-primary": isCardsCatalog || !isTableCatalog },
+              { "btn-secondary": isTableCatalog }
+            )}
             onClick={handleClickCardsCatalog}
           >
             <i style={{ fontSize: "1.5em", color: "#fff" }}>
@@ -42,7 +49,12 @@ const Catalog = () => {
           </button>
           <button
             type="button"
-            className="btn btn-secondary"
+            // className="btn btn-secondary"
+            className={classNames(
+              "btn me-2",
+              { "btn-secondary": isCardsCatalog || !isTableCatalog },
+              { "btn-primary": isTableCatalog }
+            )}
             onClick={handleClickTableCatalog}
           >
             <i style={{ fontSize: "1.5em", color: "#fff" }}>
@@ -52,11 +64,18 @@ const Catalog = () => {
         </div>
       </div>
 
-    {!isCardsCatalog && !isTableCatalog && (<TableCatalog/>)}
-
-      {isCardsCatalog ? <CardsCatalog /> : ""}
-      {isTableCatalog ? <TableCatalog /> : ""}
-
+      <div className="row">
+        <div className="col-md-3">
+          <Find/>
+        </div>
+        <div className="col-md-9">
+          <div className="container">
+            {!isCardsCatalog && !isTableCatalog && <CardsCatalog />}
+            {isCardsCatalog ? <CardsCatalog /> : ""}
+            {isTableCatalog ? <TableCatalog /> : ""}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

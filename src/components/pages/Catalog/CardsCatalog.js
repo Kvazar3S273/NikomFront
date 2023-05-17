@@ -1,59 +1,79 @@
 import React from "react";
-import logo from "../../../../src/logoN.png";
+import logo from "../../../../src/noImage.jpg";
+import { Link } from "react-router-dom";
 
 const CardsCatalog = () => {
   return (
     <div>
-      <h2 className="text-center mt-3 mb-3">
-        Каталог товарів у вигляді карток
-      </h2>
-      <div className="container">
-        <div className="row">
-          <div className="col-6 col-sm-4 col-md-3 bg-light rounded ">
+      <div className="row">
+        <div className="col-6 col-sm-4 col-md-3 bg-light rounded mt-2 mb-2">
+          <Link
+            aria-current="page"
+            to="/item"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <div className="card">
               <img src={logo} className="card-img-top" alt="Товар1" />
+              <h4 class="card-header">КТ315</h4>
               <div className="card-body-photo m-3">
-                <h4 className="card-title text-center">КТ315</h4>
                 <h6 className="card-title ">Транзистор</h6>
                 <h6 className="card-title ">NPN</h6>
-                <h4 className="card-title text-center">3.50 грн</h4>
+                {/* <Link to="/catalog" class="btn btn-primary">В кошик</Link> */}
               </div>
+              <h4 class="card-header text-end">3.50 грн</h4>
             </div>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 bg-light rounded ">
+          </Link>
+        </div>
+        <div className="col-6 col-sm-4 col-md-3 bg-light rounded mt-2 mb-2">
+          <Link
+            aria-current="page"
+            to="/item"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <div className="card">
-              <img src={logo} className="card-img-top" alt="Товар1" />
+              <img src={logo} className="card-img-top" alt="Товар2" />
+              <h4 class="card-header">PIC16F628A</h4>
               <div className="card-body-photo m-3">
-                <h4 className="card-title text-center">PIC16F628A</h4>
                 <h6 className="card-title ">Мікроконтролер</h6>
                 <h6 className="card-title ">МС</h6>
-                <h4 className="card-title text-center">83.00 грн</h4>
               </div>
+              <h4 class="card-header text-end">83.00 грн</h4>
             </div>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 bg-light rounded ">
+          </Link>
+        </div>
+        <div className="col-6 col-sm-4 col-md-3 bg-light rounded mt-2 mb-2">
+          <Link
+            aria-current="page"
+            to="/item"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <div className="card">
-              <img src={logo} className="card-img-top" alt="Товар1" />
+              <img src={logo} className="card-img-top" alt="Товар3" />
+              <h4 class="card-header">Arduino Nano</h4>
               <div className="card-body-photo m-3">
-                <h4 className="card-title text-center">Arduino Nano</h4>
                 <h6 className="card-title ">Мікроконтролер</h6>
                 <h6 className="card-title ">Модуль</h6>
-                <h4 className="card-title text-center">105.00 грн</h4>
               </div>
+              <h4 class="card-header text-end">105.00 грн</h4>
             </div>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 bg-light rounded ">
+          </Link>
+        </div>
+        <div className="col-6 col-sm-4 col-md-3 bg-light rounded mt-2 mb-2">
+          <Link
+            aria-current="page"
+            to="/item"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <div className="card">
-              <img src={logo} className="card-img-top" alt="Товар1" />
+              <img src={logo} className="card-img-top" alt="Товар4" />
+              <h4 class="card-header">1N4148</h4>
               <div className="card-body-photo m-3">
-                <h4 className="card-title text-center">1N4148</h4>
                 <h6 className="card-title ">Діод</h6>
                 <h6 className="card-title ">Малопотужний</h6>
-                <h4 className="card-title text-center">2.00 грн</h4>
               </div>
+              <h4 class="card-header text-end">2.00 грн</h4>
             </div>
-          </div>
-          
+          </Link>
         </div>
       </div>
     </div>

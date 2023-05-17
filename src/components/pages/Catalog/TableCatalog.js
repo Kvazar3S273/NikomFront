@@ -1,14 +1,10 @@
-import React from 'react';
-import logo from "../../../../src/logoN.png";
+import React from "react";
+import logo from "../../../../src/noImage.jpg";
 
 const TableCatalog = () => {
   return (
     <div>
-      <h2 className="text-center mt-3 mb-3">Каталог товарів у вигляді таблиці</h2>
-        
-      <div className="row">
-        <div className="col-md-1"></div>
-        <div className="col-md-10">
+        <div className="row">
           <table className="table table-hover">
             <thead>
               <tr>
@@ -27,7 +23,14 @@ const TableCatalog = () => {
                 <td>КТ315</td>
                 <td>Транзистор</td>
                 <td>NPN</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>3.50</td>
                 <td>
                   {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
@@ -41,7 +44,14 @@ const TableCatalog = () => {
                 <td>PIC16F628A</td>
                 <td>Мікроконтролер</td>
                 <td>МС</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>83.00</td>
                 <td>
                   {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
@@ -55,7 +65,14 @@ const TableCatalog = () => {
                 <td>Arduino Nano</td>
                 <td>Мікроконтролер</td>
                 <td>Модуль</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>105.00</td>
                 <td>
                   {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
@@ -69,7 +86,14 @@ const TableCatalog = () => {
                 <td>1N4148</td>
                 <td>Діод</td>
                 <td>Малопотужний</td>
-                <td><img src={logo} class="img-fluid" alt="imag" style={{height:"40px"}}/></td>
+                <td>
+                  <img
+                    src={logo}
+                    class="img-fluid"
+                    alt="imag"
+                    style={{ height: "40px" }}
+                  />
+                </td>
                 <td>2.00</td>
                 <td>
                   {/* <i style={{ color: "#03a9f4", fontSize: "25px" }}>
@@ -78,14 +102,11 @@ const TableCatalog = () => {
                   <FontAwesomeIcon icon={faTrash} /></i> */}
                 </td>
               </tr>
-              
             </tbody>
           </table>
         </div>
-        <div className="col-md-1"></div>
-      </div>
     </div>
-  )
-}
+  );
+};
 
 export default TableCatalog;
